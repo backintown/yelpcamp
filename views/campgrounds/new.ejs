@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+
+<div class='ui container'>
+    <h1 style='text-align: center;'>Create a new campground</h1>
+      <div class='ui container'>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action='/campgrounds/' method='POST' enctype='multipart/form-data' class='ui form'>
+                <div class='field'>
+                    <label>Campground name</label>
+                    <input type='text' name='campground[name]' placeholder='name' required>
+                </div>
+                <div class='field'>
+                    <label>Price</label>
+                    <input type='number' name='campground[price]' placeholder='price' min='0.00' step='0.01'>
+                </div>
+                <div class='field' required>
+                    <label>Image</label>
+                    <input type='file' name='fileImage' accept='image/*' required>
+                </div>
+                <div class='field'>
+                    <label>Description</label>
+                    <input type='text' name='campground[description]' placeholder='description'>
+                </div>
+                <button class='ui blue submit button' type='submit'>Submit!</button>
+            </form>
+            <a href='/campgrounds'>Go back</a>
+        </div>
+    </div>
+
+</div>
+<% include ../partials/footer %>

@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+    <div class='ui container'>
+        <h1 style='text-align: center;'>Edit <%=campground.name%></h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action='/campgrounds/<%=campground._id%>?_method=PUT' method='PUT' enctype='multipart/form-data' class='ui form'>
+                <div class='field'>
+                    <label>Campground name</label>
+                    <input type='text' name='campground[name]' value='<%=campground.name%>' required>
+                </div>
+                <div class='field'>
+                    <label>Price</label>
+                    <input type='number' name='campground[price]' value='<%=campground.price%>' min='0.00' step='0.01' required>
+                </div>
+                <div class='field'>
+                    <label>Image</label>
+                    <% if (!campground.image_id) { %>
+                        <input type='text' name='campground[image]' value='<%=campground.image%>'>
+                    <% } else { %>    
+                        <input type='text' name='campground[image]'>
+                    <% } %>
+                    <input type='file' name='fileImage' accept='image/*'>
+                </div>
+                <div class='field'>
+                    <label>Description</label>
+                    <input type='text' name='campground[description]' value='<%=campground.description%>' required>
+                </div>
+                <button class='ui blue submit button' type='submit'>Submit!</button>
+            </form>
+            <a href='/campgrounds'>Go back</a>
+        </div>
+    </div>
+
+
+<% include ../partials/footer %>

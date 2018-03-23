@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+
+<div class='ui container'>
+        <div class='ui segment'>
+            <h1 class='ui header center aligned'>Welcome to YelpCamp!</h1>
+                <p>
+                    <div class="ui center aligned basic segment">
+                        <form action='/campgrounds' method='GET' class="ui left icon input action">
+                            <i class="search icon"></i>
+                            <input type="text" name='search' placeholder='Search campgrounds'>
+                            <button type='submit'class="ui blue submit button">Search</button>
+                        </form>
+                        <div class="ui horizontal divider">
+                            Or
+                        </div>
+                        <div>
+                            <a class="ui teal labeled icon button" href='/campgrounds/new'>
+                                <i class="add icon"></i>Add new campground
+                            </a>
+                        
+                        </div>
+                    </div>
+                </p>
+        </div>
+
+
+        <div class='ui four link stackable cards'>
+        <% campgrounds.forEach(function(campground) { %>
+                <div class="card">
+                    <div class="ui fluid image">
+                        <img src="<%=campground.image%>">
+                    </div>
+                    <div class="content">
+                        <div class="header"><a href='/campgrounds/<%= campground._id %>'><%=campground.name%></div></a>
+                        <div class="meta">
+                            location
+                        </div>
+                        <div class="description">
+                            <%=campground.description%>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <span class="right floated">
+                            <a href='/campgrounds/<%= campground._id %>'>More Info</a>
+                        </span>
+                        <span>
+                            <i class="user icon"></i>
+                            75 Friends
+                        </span>
+                    </div>
+                </div>
+        <% }); %>
+        </div>
+    <!--<div class='row'>-->
+    <!--    <% campgrounds.forEach(function(campground) { %>-->
+    <!--        <div class='col-md-3 col-sm-6'>-->
+    <!--            <div class='thumbnail' style='text-align: center;'>-->
+    <!--                <img src='<%= campground.image %>' style='height: 200px; width: 100%' href='/campgrounds/<%=campground._id%>'></img>-->
+    <!--                <div class='caption'>-->
+    <!--                    <h4><%= campground.name %></h4>-->
+    <!--                </div>-->
+    <!--                <p><a href='/campgrounds/<%= campground._id %>' class='btn btn-primary'>More Info</a></p>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    <% }); %>-->
+    <!--</div>-->
+</div>
+
+<% include ../partials/footer %>
