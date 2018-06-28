@@ -21,8 +21,8 @@ var commentRoutes = require("./routes/comments"),
 //app config
 
 //mongoose.connect("mongodb://localhost/yelp_camp");
-//mongoose.connect('mongodb://alex2:test@ds153978.mlab.com:53978/yelpcamp1234');
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect('mongodb://alex2:test@ds153978.mlab.com:53978/yelpcamp1234');
+//mongoose.connect(process.env.DATABASEURL);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
@@ -113,5 +113,5 @@ app.use('/campgrounds/:id/comments', commentRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function() {
-    console.log('server started');
+    console.log('server started', process.env.DATABASEURL);
 });
